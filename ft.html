@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>اخر يوم جيش</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      background-image: url('C:/Users/alain/OneDrive/Desktop/WEB/fat/ششش.jpg');
+      background-size: contain; /* Ensures the whole image is visible without stretching */
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+
+    .countdown {
+      text-align: center;
+      background-color: rgba(255, 255, 255, 0.7); /* Adding a semi-transparent white background to improve readability */
+      padding: 20px;
+      border-radius: 10px;
+    }
+
+    #timer {
+      display: flex;
+      justify-content: center;
+      margin-top: 20px;
+    }
+
+    #timer div {
+      margin: 0 10px;
+    }
+
+    #timer span {
+      font-size: 36px;
+    }
+
+    .label {
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+  <div class="countdown">
+    <h1>اخر يوم جيش</h1>
+    <div id="timer">
+      <div>
+        <span id="days"></span>
+        <div class="label">Days</div>
+      </div>
+      <div>
+        <span id="hours"></span>
+        <div class="label">Hours</div>
+      </div>
+      <div>
+        <span id="minutes"></span>
+        <div class="label">Minutes</div>
+      </div>
+      <div>
+        <span id="seconds"></span>
+        <div class="label">Seconds</div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Set the date we're counting down to
+    var countDownDate = new Date("May 25, 2024 00:00:00").getTime();
+
+    // Update the countdown every 1 second
+    var x = setInterval(function() {
+
+      // Get the current date and time
+      var now = new Date().getTime();
+      
+      // Calculate the distance between now and the countdown date
+      var distance = countDownDate - now;
+      
+      // Calculate days, hours, minutes, and seconds
+      var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+      
+      // Display the countdown
+      document.getElementById("days").innerHTML = days;
+      document.getElementById("hours").innerHTML = hours;
+      document.getElementById("minutes").innerHTML = minutes;
+      document.getElementById("seconds").innerHTML = seconds;
+      
+      // If the countdown is over, display a message
+      if (distance < 0) {
+        clearInterval(x);
+        document.getElementById("timer").innerHTML = "EXPIRED";
+      }
+    }, 1000);
+  </script>
+</body>
+</html>
